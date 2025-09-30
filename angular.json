@@ -155,10 +155,10 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "configurations": {
               "local": {
-                "browserTarget": "demo:build:local"
+                "buildTarget": "demo:build:local"
               },
               "npm": {
-                "browserTarget": "demo:build:npm"
+                "buildTarget": "demo:build:npm"
               }
             },
             "defaultConfiguration": "local"
@@ -166,7 +166,7 @@
           "extract-i18n": {
             "builder": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-              "browserTarget": "demo:build"
+              "buildTarget": "demo:build"
             }
           },
           "test": {
