@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatLegacySliderChange as MatSliderChange } from '@angular/material/legacy-slider';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -35,13 +34,14 @@ import { FormControl, Validators } from '@angular/forms';
                 <div style="margin-left: -16px; padding: 0 8px" class="slider-knob-overlay divider-border">
                     <mat-slider
                         style="width: 332px"
-                        [(ngModel)]="value"
                         [min]="min"
                         [max]="max"
-                        [tickInterval]="tickInterval"
                         [step]="step"
-                        (input)="updateValue($event)"
-                    ></mat-slider>
+                        [discrete]="true"
+                        [showTickMarks]="tickInterval > 0"
+                    >
+                        <input matSliderThumb [(ngModel)]="value" (valueChange)="updateValue($event)" />
+                    </mat-slider>
                 </div>
             </div>
         </ng-template>
@@ -81,10 +81,10 @@ export class KnobNumberComponent {
         this.control.markAsTouched();
     }
 
-    updateValue(e: MatSliderChange): void {
-        this.value = e.value;
-        this.control.setValue(e.value);
-        this.valueChange.emit(e.value);
+    updateValue(value: number): void {
+        this.value = value;
+        this.control.setValue(value);
+        this.valueChange.emit(value);
     }
 
     clickedBackdrop(): void {
