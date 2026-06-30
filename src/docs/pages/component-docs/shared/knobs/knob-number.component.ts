@@ -37,6 +37,8 @@ import { FormControl, Validators } from '@angular/forms';
                         [min]="min"
                         [max]="max"
                         [step]="step"
+                        [discrete]="true"
+                        [showTickMarks]="tickInterval > 0"
                     >
                         <input matSliderThumb [(ngModel)]="value" (valueChange)="updateValue($event)" />
                     </mat-slider>
